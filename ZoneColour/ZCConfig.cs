@@ -7,7 +7,6 @@ using ColossalFramework.Plugins;
 using ColossalFramework.UI;
 using ColossalFramework.IO;
 using ColossalFramework.Math;
-using ColossalFramework.Steamworks;
 using ColossalFramework.Threading;
 using ICities;
 using UnityEngine;
