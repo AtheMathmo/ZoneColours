@@ -8,12 +8,15 @@ using ColossalFramework.UI;
 using ICities;
 using UnityEngine;
 using System.ComponentModel;
+using System.Xml.Linq;
 
 
 namespace ZoneColour
 {
-    public class ZoneColourLoader : LoadingExtensionBase
-    {
+    public class ZoneColourLoader : LoadingExtensionBase {
+
+        private GameObject mainUIPanelGameObject;
+    
         private UIDragHandle _dragHandle;
         public override void OnLevelLoaded(LoadMode mode)
         {
@@ -34,18 +37,50 @@ namespace ZoneColour
                 }
             }
 
+
+
+
+
+
+
+
+
 /*            ZoningPanel zoningPanel = GameObject.FindObjectOfType<ZoningPanel>();
             UIPanel container = zoningPanel.GetComponentInChildren<UIPanel>();*/
 
+     //       UIView view = UIView.GetAView();
+            //ZCMainUIPanel panel = view.AddUIComponent(typeof(ZCMainUIPanel)) as ZCMainUIPanel;
+            //panel.transform.parent = view.transform;
+            /*            UIPanel panel = view.AddUIComponent(typeof(UIPanel)) as UIPanel;
+                        panel.name = "MyUIPanel";
+                        panel.backgroundSprite = "GenericPanel";
+                        panel.width = 360;
+                        panel.height = 56;
+                        _dragHandle = (UIDragHandle)panel.AddUIComponent(typeof(UIDragHandle));*/
+            //AddZoneColorPickers(panel);
+        //AddZoneColorPickers(container);
+
+
+        try {
+            //_modManager = new GameObject("ZCCModManager");
+            //_modManager.AddComponent<ModManager>();
+
             UIView view = UIView.GetAView();
-            UIPanel panel = view.AddUIComponent(typeof(UIPanel)) as UIPanel;
-            panel.name = "MyUIPanel";
-            panel.backgroundSprite = "GenericPanel";
-            panel.width = 360;
-            panel.height = 56;
-            _dragHandle = (UIDragHandle)panel.AddUIComponent(typeof(UIDragHandle));
-            AddZoneColorPickers(panel);
-            //AddZoneColorPickers(container);
+            //UIView uiView = UnityEngine.Object.FindObjectOfType<UIView>();
+
+            if(view != null) {
+                mainUIPanelGameObject = new GameObject("MainUIPanel");
+                mainUIPanelGameObject.transform.parent = view.transform;
+                mainUIPanelGameObject.AddComponent<ZCMainUIPanel>(); 
+            }
+               
+        }
+
+        catch(Exception e) {
+            Debug.Log("[ZoneColourRevisited] Loading:OnLevelLoaded -> Exception: " + e.Message);
+        }
+
+           // AddZoneColorPickers(mainUIPanelGameObject);
 
 
         }

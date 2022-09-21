@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Utils.cs" />
     <Compile Include="ZCConfig.cs" />
+    <Compile Include="ZCMainUIPanel.cs" />
     <Compile Include="ZoneColourLoader.cs" />
     <Compile Include="ZoneColourMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
