@@ -13,29 +13,29 @@ using UnityEngine;
 
 namespace ZoneColour
 {
-    public class ZoneColourTrigger : ThreadingExtensionBase
-    {
-        private static Color[] defaultColours;
+	public class ZoneColourTrigger : ThreadingExtensionBase
+	{
+		private static Color[] defaultColours;
 
-        public static Color[] DefaultColours
-        {
-            get { return defaultColours; }
-            set { defaultColours = value; }
-        }
+		public static Color[] DefaultColours
+		{
+			get { return defaultColours; }
+			set { defaultColours = value; }
+		}
 
-        public override void OnCreated(IThreading threading)
-        {
-        }
+		public override void OnCreated(IThreading threading)
+		{
+		}
 
-        public override void OnUpdate(float realTimeDelta, float simulationTimeDelta)
-        {
-            
-/*            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Debug.Log("K Pressed.");
-                Utils.SetZoneColours(defaultColours);
-            }*/
-             
-        }
-    }
+		public override void OnUpdate(float realTimeDelta, float simulationTimeDelta)
+		{
+			
+/*			if (Input.GetKeyDown(KeyCode.K))
+			{
+				Debug.Log("K Pressed.");
+				Utils.SetZoneColours(defaultColours);
+			}*/
+			 
+		}
+	}
 }
