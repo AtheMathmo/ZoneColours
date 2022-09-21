@@ -32,7 +32,7 @@ namespace ZoneColour {
 
             //this.name = "ZCMainUIPanel";
             this.backgroundSprite = "GenericPanel";
-            this.width = 455;
+            this.width = 456;
             this.height = 56;
             _dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
 
