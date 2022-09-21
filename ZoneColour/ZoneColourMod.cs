@@ -13,12 +13,12 @@ namespace ZoneColour
     {
         public string Name
         {
-            get { return "Zone Colour"; }
+            get { return "Zone Color Changer"; }
         }
 
         public string Description
         {
-            get { return "Allows zone colour modification."; }
+            get { return "Allows zone color modification."; }
         }
     }
 }
