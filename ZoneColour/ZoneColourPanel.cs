@@ -31,8 +31,8 @@ namespace ZoneColour
 
         public override void Awake()
         {
-            height = 20;
-            width = 20;
+            height = 40;
+            width = 40;
         }
 
         public override void Start()
@@ -49,7 +49,7 @@ namespace ZoneColour
             colorField = Instantiate(colorFIeldTemplate.gameObject).GetComponent<UIColorField>();
             this.AttachUIComponent(colorField.gameObject);
             colorField.name = "ZoneColorPicker";
-            colorField.size = new Vector2(20, 20);
+            colorField.size = new Vector2(40, 40);
             colorField.relativePosition = new Vector3(0, 0);
             colorField.pickerPosition = UIColorField.ColorPickerPosition.LeftAbove;
            
