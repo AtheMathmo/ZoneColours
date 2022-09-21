@@ -37,6 +37,7 @@ namespace ZoneColour
 
         public override void Start()
         {
+            // The source code of the Move It mod helped fixing the color picker icon, thanks SamsamTS
 
             if(colorFIeldTemplate == null) {
                 UIComponent template = UITemplateManager.Get("LineTemplate");
