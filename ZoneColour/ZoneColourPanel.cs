@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using ColossalFramework;
-using ColossalFramework.Plugins;
+﻿using ColossalFramework;
 using ColossalFramework.UI;
-using ColossalFramework.IO;
-using ColossalFramework.Math;
-using ColossalFramework.Threading;
-using ICities;
 using UnityEngine;
 
-namespace ZoneColour
-{
-	class ZoneColourPanel : UIPanel
-	{
-	  //  private UIPanel colorPanel;
+namespace ZoneColour {
+	class ZoneColourPanel : UIPanel {
+
 		private UIColorField colorField;
 		private UIColorField colorFIeldTemplate;
 
@@ -23,20 +12,17 @@ namespace ZoneColour
 
 		public UIPanel Parent { get; set; }
 
-		public int ChosenColour
-		{
+		public int ChosenColour {
 			get { return chosenColour; }
 			set { chosenColour = value; }
 		}
 
-		public override void Awake()
-		{
+		public override void Awake() {
 			height = 40;
 			width = 40;
 		}
 
-		public override void Start()
-		{
+		public override void Start() {
 			// The source code of the Move It mod helped fixing the color picker icon, thanks SamsamTS
 
 			if(colorFIeldTemplate == null) {
@@ -58,22 +44,17 @@ namespace ZoneColour
 			colorField.eventSelectedColorChanged += (component, value) => Utils.SetZoneColour(value, ChosenColour);
 		}
 
-		protected override void OnVisibilityChanged()
-		{
+		protected override void OnVisibilityChanged() {
 			base.OnVisibilityChanged();
 
 		}
 
-		protected override void OnResolutionChanged(Vector2 previousResolution, Vector2 currentResolution)
-		{
+		protected override void OnResolutionChanged(Vector2 previousResolution, Vector2 currentResolution) {
 			base.OnResolutionChanged(previousResolution, currentResolution);
 		}
 
 		public void UpdateCurrentZoneColor() {
 			colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
 		}
-
-
-
 	}
 }

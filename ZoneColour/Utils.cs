@@ -11,11 +11,10 @@ using ColossalFramework.Threading;
 using ICities;
 using UnityEngine;
 
-namespace ZoneColour
-{
-	class Utils
-	{
-		/*  Unzoned,
+namespace ZoneColour {
+	class Utils {
+		/*  
+			Unzoned,
 			Distant,
 			ResidentialLow,
 			ResidentialHigh,
@@ -23,26 +22,23 @@ namespace ZoneColour
 			CommercialHigh,
 			Industrial,
 			Office,
-			 */
+		*/
 
+		private static Color[] defaultColours; 
 
-	   private static Color[] defaultColours;
-
-		public static void SetZoneColour(Color colour, int index)
-		{
+		public static void SetZoneColour(Color colour, int index) {
 			Singleton<ZoneManager>.instance.m_properties.m_zoneColors[index] = colour;
 			Shader.SetGlobalColor("_ZoneColor" + index, colour.linear);
 		}
 
-		public static bool SetZoneColours(Color[] colours)
-		{
+		public static bool SetZoneColours(Color[] colours) {
 			Debug.Log("SetZoneColours");
 			int coloursLength = colours.Length;
-			if (coloursLength != 8)
+			if (coloursLength != 8) {
 				return false;
+			}
 
-			for (int i = 0; i < coloursLength; i++)
-			{
+			for (int i = 0; i < coloursLength; i++) {
 				Singleton<ZoneManager>.instance.m_properties.m_zoneColors[i] = colours[i];
 				Shader.SetGlobalColor("_ZoneColor" + i, colours[i].linear);
 				Debug.Log(colours[i]);
@@ -52,7 +48,7 @@ namespace ZoneColour
 		}
 
 		public static void ResetToDefaultColors() {
-			// ZoneColourTrigger.Defaultcolours doesn'T always work, no idea why. Hardcoded default colors should work
+			// ZoneColourTrigger.Defaultcolours doesn't always work, no idea why. Hardcoded default colors should work
 			// as long as they stay the same in the game
 
 			Debug.Log("reset to default colours");
@@ -68,7 +64,6 @@ namespace ZoneColour
 			defaultColours[7] = new Color(0, 0.9090365f, 0.9485294f, 1f);
 
 			SetZoneColours(defaultColours);
-			// SetZoneColours(ZoneColourTrigger.DefaultColours); 
 		}
 	}
 }

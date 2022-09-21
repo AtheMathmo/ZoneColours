@@ -23,19 +23,16 @@ namespace ZoneColour
 			set { defaultColours = value; }
 		}
 
-		public override void OnCreated(IThreading threading)
-		{
+		public override void OnCreated(IThreading threading) {
 		}
 
 		public override void OnUpdate(float realTimeDelta, float simulationTimeDelta)
 		{
-			
-/*			if (Input.GetKeyDown(KeyCode.K))
-			{
+			/*	
+ 			if (Input.GetKeyDown(KeyCode.K)) {
 				Debug.Log("K Pressed.");
 				Utils.SetZoneColours(defaultColours);
-			}*/
-			 
+			}*/ 
 		}
 	}
 }

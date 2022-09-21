@@ -1,5 +1,4 @@
 ﻿using ColossalFramework;
-using ICities;
 using System;
 using UnityEngine;
 
@@ -60,13 +59,7 @@ namespace ZoneColour {
 		}
 
 		public void ResetColors() {
-			//bool success = Utils.SetZoneColours(ZoneColourTrigger.DefaultColours);
-
 			Utils.ResetToDefaultColors();
-			
 		}
-
-
-
 	}
 }
