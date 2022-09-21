@@ -15,7 +15,7 @@ namespace ZoneColour
 {
     class ZoneColourPanel : UIPanel
     {
-        private UIPanel colorPanel;
+      //  private UIPanel colorPanel;
         private UIColorField colorField;
         private UIColorField colorFIeldTemplate;
 
@@ -68,6 +68,12 @@ namespace ZoneColour
         {
             base.OnResolutionChanged(previousResolution, currentResolution);
         }
+
+        public void UpdateCurrentZoneColor() {
+            colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
+        }
+
+
 
     }
 }

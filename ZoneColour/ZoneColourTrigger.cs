@@ -29,13 +29,13 @@ namespace ZoneColour
 
         public override void OnUpdate(float realTimeDelta, float simulationTimeDelta)
         {
-            /*
-            if (Event.current.alt && Input.GetKeyDown(KeyCode.K))
+            
+/*            if (Input.GetKeyDown(KeyCode.K))
             {
                 Debug.Log("K Pressed.");
                 Utils.SetZoneColours(defaultColours);
-            }
-             */
+            }*/
+             
         }
     }
 }

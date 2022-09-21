@@ -16,8 +16,9 @@ namespace ZoneColour
     public class ZoneColourLoader : LoadingExtensionBase {
 
         private GameObject mainUIPanelGameObject;
+        private GameObject managerGameObject;
     
-        private UIDragHandle _dragHandle;
+        //private UIDragHandle _dragHandle;
         public override void OnLevelLoaded(LoadMode mode)
         {
             ZoneColourTrigger.DefaultColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
@@ -62,8 +63,8 @@ namespace ZoneColour
 
 
         try {
-            //_modManager = new GameObject("ZCCModManager");
-            //_modManager.AddComponent<ModManager>();
+            managerGameObject = new GameObject("Manager");
+            managerGameObject.AddComponent<ZCManager>();
 
             UIView view = UIView.GetAView();
             //UIView uiView = UnityEngine.Object.FindObjectOfType<UIView>();
