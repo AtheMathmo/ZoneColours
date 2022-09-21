@@ -24,7 +24,7 @@ namespace ZoneColour {
 				}
 			}
 			catch(Exception e) {
-				Debug.Log("[ZoneColour] ZCMainUIPanel:Start -> Exception: " + e.Message);
+				Debug.Log("[ZoneColoursRevisited] ZCMainUIPanel:Start -> Exception: " + e.Message);
 			}
 
 			this.backgroundSprite = "GenericPanel";

@@ -52,7 +52,7 @@ namespace ZoneColour {
 			}
 
 			catch(Exception e) {
-				Debug.Log("[ZoneColorChanger] Loading:OnLevelLoaded -> Exception: " + e.Message);
+				Debug.Log("[ZoneColoursRevisited] Loading:OnLevelLoaded -> Exception: " + e.Message);
 			}
 		}
 
