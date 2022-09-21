@@ -17,6 +17,7 @@ namespace ZoneColour
     {
         private UIPanel colorPanel;
         private UIColorField colorField;
+        private UIColorField colorFIeldTemplate;
 
         private int chosenColour = 0;
 
@@ -36,12 +37,22 @@ namespace ZoneColour
 
         public override void Start()
         {
-            colorField = Instantiate(FindObjectOfType<UIColorField>().gameObject).GetComponent<UIColorField>();
+
+            if(colorFIeldTemplate == null) {
+                UIComponent template = UITemplateManager.Get("LineTemplate");
+                if(template == null) return;
+
+                colorFIeldTemplate = template.Find<UIColorField>("LineColor");
+                if(colorFIeldTemplate == null) return;
+            }
+
+            colorField = Instantiate(colorFIeldTemplate.gameObject).GetComponent<UIColorField>();
             this.AttachUIComponent(colorField.gameObject);
             colorField.name = "ZoneColorPicker";
             colorField.size = new Vector2(20, 20);
             colorField.relativePosition = new Vector3(0, 0);
-            colorField.pickerPosition = UIColorField.ColorPickerPosition.LeftBelow;
+            colorField.pickerPosition = UIColorField.ColorPickerPosition.LeftAbove;
+           
             colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
             colorField.eventSelectedColorChanged += (component, value) => Utils.SetZoneColour(value, ChosenColour);
            
