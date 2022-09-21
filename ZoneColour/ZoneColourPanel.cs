@@ -56,21 +56,6 @@ namespace ZoneColour
            
             colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
             colorField.eventSelectedColorChanged += (component, value) => Utils.SetZoneColour(value, ChosenColour);
-           
-            /*
-            textField.width = 40;
-            textField.relativePosition = new Vector3(0, 0);
-            textField.normalBgSprite = "TextFieldPanel";
-            textField.hoveredBgSprite = "TextFieldPanelHovered";
-            textField.focusedBgSprite = "TextFieldUnderline";
-
-            textField.text = "0";
-
-            textField.isInteractive = true;
-            textField.enabled = true;
-            textField.readOnly = false;
-            textField.builtinKeyNavigation = true; 
-             */
         }
 
         protected override void OnVisibilityChanged()
