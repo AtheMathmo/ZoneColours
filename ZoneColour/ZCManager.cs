@@ -21,13 +21,13 @@ namespace ZoneColour {
 		}
 
 		public void Update() {
-			if((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKey(KeyCode.I)) {
+			if((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKey(KeyCode.M)) {
 				// cancel if they key input was already processed in a previous frame
 				if(_keyProcessed) return;
 
 				_keyProcessed = true;
 				ToggleUIPanelVisibility();
-				Debug.Log("Keyboard: Strg+I");
+				Debug.Log("Keyboard: Strg+M");
 			}
 			else {
 				// not both keys pressed: Reset processed state
