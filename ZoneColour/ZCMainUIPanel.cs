@@ -28,11 +28,13 @@ namespace ZoneColour {
 			}
 
 			this.backgroundSprite = "GenericPanel";
-			this.width = 456;
+			this.width = 487;
 			this.height = 56;
 			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
 
+
 			AddZoneColorPickers(this);
+			this.Hide();
 		}
 
 		private void AddZoneColorPickers(UIPanel container) {
@@ -85,26 +87,32 @@ namespace ZoneColour {
 			UIButton saveButton = CreateButton(container);
 			saveButton.transform.parent = container.transform;
 			saveButton.relativePosition = new Vector3(xPos, yPos + 4);
+			saveButton.text = "SAVE";
 			saveButton.eventClick += saveButtonClick;
+			saveButton.textScale = 0.85f;
 
-			xPos += spriteWidth-1;
+			xPos += spriteWidth+8;
 
 			UIButton loadButton = CreateButton(container);
 			loadButton.transform.parent = container.transform;
 			loadButton.relativePosition = new Vector3(xPos, yPos + 4);
+			loadButton.text = "LOAD";
 			loadButton.eventClick += loadButtonClick;
+			loadButton.textScale = 0.85f;
 
-			xPos += spriteWidth-1;
+			xPos += spriteWidth+8;
 
 			UIButton resetButton = CreateButton(container);
 			resetButton.transform.parent = container.transform;
 			resetButton.relativePosition = new Vector3(xPos, yPos + 4);
+			resetButton.text = "RESET";
 			resetButton.eventClick += resetButtonClick;
+			resetButton.textScale = 0.85f;
 		}
 
 		public static UIButton CreateButton(UIComponent parent) { // thanks SamsamTS
 			UIButton button = (UIButton)parent.AddUIComponent<UIButton>();
-			button.width = 37;
+			button.width = 50;
 			button.height = 31;
 			button.textScale = 0.9f;
 			button.normalBgSprite = "ButtonMenu";
