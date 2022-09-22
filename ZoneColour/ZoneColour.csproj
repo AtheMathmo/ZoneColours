@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ZCConfig.cs" />
+    <Compile Include="ZCConfiguration.cs" />
     <Compile Include="ZCMainUIPanel.cs" />
     <Compile Include="ZCManager.cs" />
     <Compile Include="ZoneColourLoader.cs" />

@@ -65,5 +65,28 @@ namespace ZoneColour {
 
 			SetZoneColours(defaultColours);
 		}
+
+		public static void SaveColors() {
+			Debug.Log("saving colours...");
+			ZCConfig.SavedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
+			ZCConfig.SaveColours();
+		}
+
+		public static void LoadColors() {
+			if(ZCConfig.LoadSavedColours()) {
+				bool success = SetZoneColours(ZCConfig.SavedColours);
+
+				if(success) {
+					Debug.Log("Saved colours successfully applied.");
+				}
+				else {
+					Debug.Log("Saved colours failed to apply.");
+				}
+			}
+		}
+
+		public static void ToggleUIPanelVisibility() {
+			Debug.Log("utils toggle ui");
+		}
 	}
 }

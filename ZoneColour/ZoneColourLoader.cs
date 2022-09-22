@@ -12,7 +12,7 @@ namespace ZoneColour {
 
 		public override void OnLevelLoaded(LoadMode mode) {
 			//ZoneColourTrigger.DefaultColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors; // doesn't always work, no idea why
-																										  // values are now hardcoded where used
+																										    // values are now hardcoded where used
 			if(ZCConfig.LoadSavedColours()) {
 				bool success = Utils.SetZoneColours(ZCConfig.SavedColours);
 
@@ -57,8 +57,7 @@ namespace ZoneColour {
 		}
 
 		public override void OnLevelUnloading() {
-			ZCConfig.SavedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
-			ZCConfig.SaveColours();
+			Utils.SaveColors();
 		}
 	}
 }

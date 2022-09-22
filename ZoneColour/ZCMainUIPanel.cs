@@ -125,29 +125,29 @@ namespace ZoneColour {
 
 		public void saveButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
 			Debug.Log("save Button Click");
-			manager.SaveColors();
+			Utils.SaveColors();
 		}
 
 		public void loadButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
 			Debug.Log("load Button Click");
-			manager.LoadColors();
+			Utils.LoadColors();
 			ShowCurrentZoneColorsInColorPickers();
 		}
 
 		public void resetButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
 			Debug.Log("reset Button Click");
-			manager.ResetColors();
+			Utils.ResetToDefaultColors();
 			ShowCurrentZoneColorsInColorPickers();
 		}
 
 		public void ToggleVisibility() {
-			if(this.isVisible) {
-				this.Hide();
-				Debug.Log("show panel: " + this.isVisible);
+			if(isVisible) {
+				Hide();
+				Debug.Log("show panel: " + isVisible);
 			}
 			else {
-				this.Show();
-				Debug.Log("show panel: " + this.isVisible);
+				Show();
+				Debug.Log("show panel: " + isVisible);
 			}
 		}
 

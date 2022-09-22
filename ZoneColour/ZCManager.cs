@@ -21,6 +21,7 @@ namespace ZoneColour {
 		}
 
 		public void Update() {
+			
 			if((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKey(KeyCode.K)) {
 				// cancel if they key input was already processed in a previous frame
 				if(_keyProcessed) return;
