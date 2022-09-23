@@ -46,7 +46,6 @@ namespace ZoneColour {
 
 		protected override void OnVisibilityChanged() {
 			base.OnVisibilityChanged();
-
 		}
 
 		protected override void OnResolutionChanged(Vector2 previousResolution, Vector2 currentResolution) {

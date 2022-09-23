@@ -39,28 +39,5 @@ namespace ZoneColour {
 		public void ToggleUIPanelVisibility() {
 			mainUIPanelGameObject.ToggleVisibility();
 		}
-
-		public void SaveColors() {
-			Debug.Log("saving colours...");
-			ZCConfig.SavedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
-			ZCConfig.SaveColours();
-		}
-
-		public void LoadColors() {
-			if(ZCConfig.LoadSavedColours()) {
-				bool success = Utils.SetZoneColours(ZCConfig.SavedColours);
-
-				if(success) {
-					Debug.Log("Saved colours successfully applied.");
-				}
-				else {
-					Debug.Log("Saved colours failed to apply.");
-				}
-			}
-		}
-
-		public void ResetColors() {
-			Utils.ResetToDefaultColors();
-		}
 	}
 }

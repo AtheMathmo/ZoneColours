@@ -26,6 +26,10 @@ namespace ZoneColour {
 
 		private static Color[] defaultColours; 
 
+		public static void Init() {
+
+		}
+
 		public static void SetZoneColour(Color colour, int index) {
 			Singleton<ZoneManager>.instance.m_properties.m_zoneColors[index] = colour;
 			Shader.SetGlobalColor("_ZoneColor" + index, colour.linear);
@@ -48,7 +52,7 @@ namespace ZoneColour {
 		}
 
 		public static void ResetToDefaultColors() {
-			// ZoneColourTrigger.Defaultcolours doesn't always work, no idea why. Hardcoded default colors should work
+			// ZoneColourTrigger.Defaultcolours didn't always work, no idea why. Hardcoded default colors should work
 			// as long as they stay the same in the game
 
 			Debug.Log("reset to default colours");
