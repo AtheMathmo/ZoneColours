@@ -5,15 +5,16 @@ using System;
 using UnityEngine;
 
 namespace ZoneColour {
-	public class ZoneColourMod : IUserMod {
+	public class ModInfo : IUserMod {
 		public const string settingsFileName = "ZoneColoursVisited";
 		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.O, true, false, false), true);
 
 		public static bool _settingsFailed = false;
 
-		public ZoneColourMod() {
+		public ModInfo() {
 			try {
 				// Creating setting file - from SamsamTS
+				// only the toggle ui keybind is stored in his file. color profile is in ConfigFile
 				if(GameSettings.FindSettingsFileByName(settingsFileName) == null) {
 					GameSettings.AddSettingsFile(new SettingsFile[] { new SettingsFile() { fileName = settingsFileName } });
 				}

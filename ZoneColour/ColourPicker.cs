@@ -3,7 +3,7 @@ using ColossalFramework.UI;
 using UnityEngine;
 
 namespace ZoneColour {
-	class ZoneColourPanel : UIPanel {
+	class ColourPicker : UIPanel {
 
 		private UIColorField colorField;
 		private UIColorField colorFIeldTemplate;
@@ -23,7 +23,7 @@ namespace ZoneColour {
 		}
 
 		public override void Start() {
-			// The source code of the Move It mod helped fixing the color picker icon, thanks SamsamTS
+			// The source code of the Move It mod helped fixing the color picker airplane icon, thanks SamsamTS
 
 			if(colorFIeldTemplate == null) {
 				UIComponent template = UITemplateManager.Get("LineTemplate");

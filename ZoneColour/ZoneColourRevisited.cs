@@ -1,34 +1,31 @@
 ﻿using ColossalFramework;
+using ColossalFramework.UI;
 using System;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace ZoneColour {
-	public class ZCManager : MonoBehaviour {
+	public class ZoneColourRevisited : MonoBehaviour {
 
-		private ZCMainUIPanel mainUIPanelGameObject;
+		private MainUIPanel mainUIPanel;
 
 		private bool _keyProcessed = false;
-
+		
 		public void Start() {
-			try {
-				if(mainUIPanelGameObject == null) {
-					mainUIPanelGameObject = GameObject.Find("MainUIPanel")?.GetComponent<ZCMainUIPanel>();
-				}
-			}
-			catch(Exception e) {
-				Debug.Log("[ZoneColour] ZCManager:Start -> Exception: " + e.Message);
-			}
+			Utils.LoadColors();
+
+			UIView view = UIView.GetAView();
+			mainUIPanel = view.AddUIComponent(typeof(MainUIPanel)) as MainUIPanel;
 		}
 
 		public void Update() {
-			
-			if(ZoneColourMod.ToggleUIShortcut.IsPressed()) {
+			if(ModInfo.ToggleUIShortcut.IsPressed()) {
 				// cancel if they key input was already processed in a previous frame
 				if(_keyProcessed) return;
 
 				_keyProcessed = true;
 				ToggleUIPanelVisibility();
-				Debug.Log("Keyboard: Strg+K");
+				Debug.Log("ZoneColourRevisited ui toggle key");
 			}
 			else {
 				// not both keys pressed: Reset processed state
@@ -37,7 +34,7 @@ namespace ZoneColour {
 		}
 
 		public void ToggleUIPanelVisibility() {
-			mainUIPanelGameObject.ToggleVisibility();
+			mainUIPanel.ToggleVisibility();
 		}
 	}
 }

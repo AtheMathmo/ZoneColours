@@ -5,7 +5,15 @@ using ColossalFramework.IO;
 using UnityEngine;
 
 namespace ZoneColour {
-	class ZCConfig {
+	class ConfigFile {
+		/* This class is from the original Zone Colours Mod
+		 * The current zone colors are stored in this config file
+		 * in localappdata/ModConfig/
+		 * Maybe it would be a good idea to store the colors
+		 * with the option setting together. 
+		 */
+
+		private static string filename = "zone-colours-revisited.cfg";
 		private static Color[] savedColours;
 
 		public static Color[] SavedColours {
@@ -21,7 +29,7 @@ namespace ZoneColour {
 				if (!Directory.Exists(path)) 
 					Directory.CreateDirectory(path);
 
-				path += "zone-colours.cfg";
+				path += filename;
 
 				return path;
 			}

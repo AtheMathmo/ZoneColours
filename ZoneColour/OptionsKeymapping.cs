@@ -11,7 +11,7 @@ namespace ZoneColour {
 	public class OptionsKeymapping : UICustomControl {
 		// Token: 0x06000023 RID: 35 RVA: 0x000036B8 File Offset: 0x000018B8
 		private void Awake() {
-			AddKeymapping("Toggle UI", ZoneColourMod.ToggleUIShortcut);
+			AddKeymapping("Toggle UI", ModInfo.ToggleUIShortcut);
 		}
 
 		// Token: 0x06000024 RID: 36 RVA: 0x00003718 File Offset: 0x00001918

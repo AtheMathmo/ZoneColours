@@ -1,37 +1,36 @@
 ﻿using ColossalFramework.UI;
-using System;
 using UnityEngine;
 
 namespace ZoneColour {
-	public class ZCMainUIPanel : UIPanel{
+	public class MainUIPanel : UIPanel{
 		private UIDragHandle _dragHandle;
 
-		private ZCManager manager;
+		ColourPicker lowResColourPanel;
+		ColourPicker highResColourPanel;
+		ColourPicker lowComColourPanel;
+		ColourPicker highComColourPanel;
+		ColourPicker IndColourPanel;
+		ColourPicker OfficeColourPanel;
 
-		ZoneColourPanel lowResColourPanel;
-		ZoneColourPanel highResColourPanel;
-		ZoneColourPanel lowComColourPanel;
-		ZoneColourPanel highComColourPanel;
-		ZoneColourPanel IndColourPanel;
-		ZoneColourPanel OfficeColourPanel;
+		/*			
+			// color pickers back in the zoning panel like in 
+			// the original Zone Colours mod would be cool
+			// but they always expand to the bottom in there,
+			// half of it is out of screen. It seems the
+			// color fields do not want to expand above the
+			// upper zoning panel border and I could not 
+			// figure out how to fix it. Suggestions welcome. 
+
+			ZoningPanel zoningPanel = GameObject.FindObjectOfType<ZoningPanel>();
+			UIPanel container = zoningPanel.GetComponentInChildren<UIPanel>();
+			AddZoneColorPickers(container); // is now in the panel class
+*/
 
 		public override void Start() {
-			base.Start();
-
-			try {
-				if(manager == null) {
-					manager = GameObject.Find("Manager")?.GetComponent<ZCManager>();
-				}
-			}
-			catch(Exception e) {
-				Debug.Log("[ZoneColoursRevisited] ZCMainUIPanel:Start -> Exception: " + e.Message);
-			}
-
 			this.backgroundSprite = "GenericPanel";
-			this.width = 487;
+			this.width = 488;
 			this.height = 56;
 			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
-
 
 			AddZoneColorPickers(this);
 			this.Hide();
@@ -42,42 +41,42 @@ namespace ZoneColour {
 
 			int xPos = 10;
 			int yPos = 8;
-			lowResColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			lowResColourPanel = container.AddUIComponent<ColourPicker>();
 			lowResColourPanel.transform.parent = container.transform;
 			lowResColourPanel.relativePosition = new Vector3(xPos, yPos);
 			lowResColourPanel.ChosenColour = 2;
 
 			xPos += spriteWidth;
 
-			highResColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			highResColourPanel = container.AddUIComponent<ColourPicker>();
 			highResColourPanel.transform.parent = container.transform;
 			highResColourPanel.relativePosition = new Vector3(xPos, yPos);
 			highResColourPanel.ChosenColour = 3;
 
 			xPos += spriteWidth;
 
-			lowComColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			lowComColourPanel = container.AddUIComponent<ColourPicker>();
 			lowComColourPanel.transform.parent = container.transform;
 			lowComColourPanel.relativePosition = new Vector3(xPos, yPos);
 			lowComColourPanel.ChosenColour = 4;
 
 			xPos += spriteWidth;
 
-			highComColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			highComColourPanel = container.AddUIComponent<ColourPicker>();
 			highComColourPanel.transform.parent = container.transform;
 			highComColourPanel.relativePosition = new Vector3(xPos, yPos);
 			highComColourPanel.ChosenColour = 5;
 
 			xPos += spriteWidth;
 
-			IndColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			IndColourPanel = container.AddUIComponent<ColourPicker>();
 			IndColourPanel.transform.parent = container.transform;
 			IndColourPanel.relativePosition = new Vector3(xPos, yPos);
 			IndColourPanel.ChosenColour = 6;
 
 			xPos += spriteWidth;
 
-			OfficeColourPanel = container.AddUIComponent<ZoneColourPanel>();
+			OfficeColourPanel = container.AddUIComponent<ColourPicker>();
 			OfficeColourPanel.transform.parent = container.transform;
 			OfficeColourPanel.relativePosition = new Vector3(xPos, yPos);
 			OfficeColourPanel.ChosenColour = 7;
