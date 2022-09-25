@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ZoneColorChanger {
 	public class ModInfo : IUserMod {
 		public const string settingsFileName = "ZoneColorChanger";
-		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.O, true, false, false), true);
+		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.K, true, false, false), true);
 
 		public static bool _settingsFailed = false;
 
