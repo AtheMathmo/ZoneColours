@@ -2,8 +2,8 @@
 using ColossalFramework.UI;
 using UnityEngine;
 
-namespace ZoneColour {
-	class ColourPicker : UIPanel {
+namespace ZoneColorChanger {
+	class ColorPickerPanel : UIPanel {
 
 		private UIColorField colorField;
 		private UIColorField colorFIeldTemplate;
@@ -12,7 +12,7 @@ namespace ZoneColour {
 
 		public UIPanel Parent { get; set; }
 
-		public int ChosenColour {
+		public int ChosenColor {
 			get { return chosenColour; }
 			set { chosenColour = value; }
 		}
@@ -40,8 +40,8 @@ namespace ZoneColour {
 			colorField.relativePosition = new Vector3(0, 0);
 			colorField.pickerPosition = UIColorField.ColorPickerPosition.LeftAbove;
 		   
-			colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
-			colorField.eventSelectedColorChanged += (component, value) => Utils.SetZoneColour(value, ChosenColour);
+			colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColor];
+			colorField.eventSelectedColorChanged += (component, value) => Utils.SetZoneColor(value, ChosenColor);
 		}
 
 		protected override void OnVisibilityChanged() {
@@ -53,7 +53,7 @@ namespace ZoneColour {
 		}
 
 		public void UpdateCurrentZoneColor() {
-			colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColour];
+			colorField.selectedColor = Singleton<ZoneManager>.instance.m_properties.m_zoneColors[ChosenColor];
 		}
 	}
 }

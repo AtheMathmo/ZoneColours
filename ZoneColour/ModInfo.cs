@@ -4,9 +4,9 @@ using ICities;
 using System;
 using UnityEngine;
 
-namespace ZoneColour {
+namespace ZoneColorChanger {
 	public class ModInfo : IUserMod {
-		public const string settingsFileName = "ZoneColoursVisited";
+		public const string settingsFileName = "ZoneColorChanger";
 		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.O, true, false, false), true);
 
 		public static bool _settingsFailed = false;
@@ -14,7 +14,7 @@ namespace ZoneColour {
 		public ModInfo() {
 			try {
 				// Creating setting file - from SamsamTS
-				// only the toggle ui keybind is stored in his file. color profile is in ConfigFile
+				// only the toggle ui keybind is stored in his file. color profile is in ColorProfileConfigFile
 				if(GameSettings.FindSettingsFileByName(settingsFileName) == null) {
 					GameSettings.AddSettingsFile(new SettingsFile[] { new SettingsFile() { fileName = settingsFileName } });
 				}
@@ -27,11 +27,11 @@ namespace ZoneColour {
 		}
 
 		public string Name {
-			get { return "Zone Colours Revisited"; }
+			get { return "Zone Color Changer"; }
 		}
 
 		public string Description {
-			get { return "Allows zone colour modification."; }
+			get { return "Allows zone color modification."; }
 		}
 
 		public void OnSettingsUI(UIHelperBase helper) {
@@ -39,7 +39,7 @@ namespace ZoneColour {
 			UIPanel panel = group.self as UIPanel;
 
 			group.AddSpace(10);
-			panel.gameObject.AddComponent<OptionsKeymapping>(); // 
+			panel.gameObject.AddComponent<OptionsKeymapping>();
 			group.AddSpace(10);
 		}
 	}

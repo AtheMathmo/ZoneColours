@@ -1,7 +1,7 @@
 ﻿using ColossalFramework;
 using UnityEngine;
 
-namespace ZoneColour {
+namespace ZoneColorChanger {
 	class Utils {
 		/*  
 			Unzoned,
@@ -14,19 +14,18 @@ namespace ZoneColour {
 			Office,
 		*/
 
-		private static Color[] defaultColours;
+		private static Color[] defaultColors;
 
 		public static void Init() {
 		
 		}
 
-		public static void SetZoneColour(Color colour, int index) {
-			Singleton<ZoneManager>.instance.m_properties.m_zoneColors[index] = colour;
-			Shader.SetGlobalColor("_ZoneColor" + index, colour.linear);
+		public static void SetZoneColor(Color color, int index) {
+			Singleton<ZoneManager>.instance.m_properties.m_zoneColors[index] = color;
+			Shader.SetGlobalColor("_ZoneColor" + index, color.linear);
 		}
 
-		public static bool SetZoneColours(Color[] colours) {
-			Debug.Log("SetZoneColours");
+		public static bool SetZoneColors(Color[] colours) {
 			int coloursLength = colours.Length;
 			if (coloursLength != 8) {
 				return false;
@@ -35,8 +34,6 @@ namespace ZoneColour {
 			for (int i = 0; i < coloursLength; i++) {
 				Singleton<ZoneManager>.instance.m_properties.m_zoneColors[i] = colours[i];
 				Shader.SetGlobalColor("_ZoneColor" + i, colours[i].linear);
-				Debug.Log(colours[i]);
-				Debug.Log(colours[i].linear);
 			}
 			return true;
 		}
@@ -45,43 +42,39 @@ namespace ZoneColour {
 			// ZoneColourTrigger.Defaultcolours didn't always work, no idea why. Hardcoded default colors should work
 			// as long as they stay the same in the game. 
 
-			Debug.Log("reset to default colours");
-			defaultColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors; // I don't understand this why it doesn't work without. 
+			Debug.Log("reset to default colors...");
+			defaultColors = Singleton<ZoneManager>.instance.m_properties.m_zoneColors; // I don't understand this, without it doesn't work
+																						
 
-			defaultColours[0] = new Color(1f, 1f, 1f, 0.01568628f);
-			defaultColours[1] = new Color(1f, 1f, 1f, 0.003921569f);
-			defaultColours[2] = new Color(0.2745098f, 0.627451f, 0.2117647f, 1f);
-			defaultColours[3] = new Color(0, 0.3014706f, 0.2016734f, 1f);
-			defaultColours[4] = new Color(0, 0.5529412f, 0.8666667f, 1f);
-			defaultColours[5] = new Color(0, 0.2588235f, 0.5686275f, 1f);
-			defaultColours[6] = new Color(0.9372549f, 0.7116971f, 0.1333333f, 1f);
-			defaultColours[7] = new Color(0, 0.9090365f, 0.9485294f, 1f);
+			defaultColors[0] = new Color(1f, 1f, 1f, 0.01568628f);
+			defaultColors[1] = new Color(1f, 1f, 1f, 0.003921569f);
+			defaultColors[2] = new Color(0.2745098f, 0.627451f, 0.2117647f, 1f);
+			defaultColors[3] = new Color(0, 0.3014706f, 0.2016734f, 1f);
+			defaultColors[4] = new Color(0, 0.5529412f, 0.8666667f, 1f);
+			defaultColors[5] = new Color(0, 0.2588235f, 0.5686275f, 1f);
+			defaultColors[6] = new Color(0.9372549f, 0.7116971f, 0.1333333f, 1f);
+			defaultColors[7] = new Color(0, 0.9090365f, 0.9485294f, 1f);
 
-			SetZoneColours(defaultColours);
+			SetZoneColors(defaultColors);
 		}
 
 		public static void SaveColors() {
-			Debug.Log("saving colours...");
-			ConfigFile.SavedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
-			ConfigFile.SaveColours();
+			Debug.Log("saving colors...");
+			ColorProfileConfigFile.SavedColors = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
+			ColorProfileConfigFile.SaveColors();
 		}
 
 		public static void LoadColors() {
-			if(ConfigFile.LoadSavedColours()) {
-				bool success = SetZoneColours(ConfigFile.SavedColours);
+			if(ColorProfileConfigFile.LoadSavedColors()) {
+				bool success = SetZoneColors(ColorProfileConfigFile.SavedColors);
 
 				if(success) {
-					Debug.Log("Saved colours successfully applied.");
+					Debug.Log("Saved colors successfully applied.");
 				}
 				else {
-					Debug.Log("Saved colours failed to apply.");
+					Debug.Log("Saved colors failed to apply.");
 				}
 			}
-		}
-
-		public static void ToggleUIPanelVisibility() {
-			Debug.Log("utils toggle ui");
-			//zoneColoursRevisitedGameObject.ToggleUIPanelVisibility();
 		}
 	}
 }

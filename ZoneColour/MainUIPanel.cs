@@ -1,16 +1,17 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace ZoneColour {
-	public class MainUIPanel : UIPanel{
+namespace ZoneColorChanger {
+	public class MainUIPanel : UIPanel {
+
 		private UIDragHandle _dragHandle;
 
-		ColourPicker lowResColourPanel;
-		ColourPicker highResColourPanel;
-		ColourPicker lowComColourPanel;
-		ColourPicker highComColourPanel;
-		ColourPicker IndColourPanel;
-		ColourPicker OfficeColourPanel;
+		ColorPickerPanel lowResColorPanel;
+		ColorPickerPanel highResColorPanel;
+		ColorPickerPanel lowComColorPanel;
+		ColorPickerPanel highComColorPanel;
+		ColorPickerPanel indColorPanel;
+		ColorPickerPanel officeColorPanel;
 
 		/*			
 			// color pickers back in the zoning panel like in 
@@ -27,10 +28,11 @@ namespace ZoneColour {
 */
 
 		public override void Start() {
+			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
+
 			this.backgroundSprite = "GenericPanel";
 			this.width = 488;
 			this.height = 56;
-			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
 
 			AddZoneColorPickers(this);
 			this.Hide();
@@ -41,45 +43,45 @@ namespace ZoneColour {
 
 			int xPos = 10;
 			int yPos = 8;
-			lowResColourPanel = container.AddUIComponent<ColourPicker>();
-			lowResColourPanel.transform.parent = container.transform;
-			lowResColourPanel.relativePosition = new Vector3(xPos, yPos);
-			lowResColourPanel.ChosenColour = 2;
+			lowResColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			lowResColorPanel.transform.parent = container.transform;
+			lowResColorPanel.relativePosition = new Vector3(xPos, yPos);
+			lowResColorPanel.ChosenColor = 2;
 
 			xPos += spriteWidth;
 
-			highResColourPanel = container.AddUIComponent<ColourPicker>();
-			highResColourPanel.transform.parent = container.transform;
-			highResColourPanel.relativePosition = new Vector3(xPos, yPos);
-			highResColourPanel.ChosenColour = 3;
+			highResColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			highResColorPanel.transform.parent = container.transform;
+			highResColorPanel.relativePosition = new Vector3(xPos, yPos);
+			highResColorPanel.ChosenColor = 3;
 
 			xPos += spriteWidth;
 
-			lowComColourPanel = container.AddUIComponent<ColourPicker>();
-			lowComColourPanel.transform.parent = container.transform;
-			lowComColourPanel.relativePosition = new Vector3(xPos, yPos);
-			lowComColourPanel.ChosenColour = 4;
+			lowComColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			lowComColorPanel.transform.parent = container.transform;
+			lowComColorPanel.relativePosition = new Vector3(xPos, yPos);
+			lowComColorPanel.ChosenColor = 4;
 
 			xPos += spriteWidth;
 
-			highComColourPanel = container.AddUIComponent<ColourPicker>();
-			highComColourPanel.transform.parent = container.transform;
-			highComColourPanel.relativePosition = new Vector3(xPos, yPos);
-			highComColourPanel.ChosenColour = 5;
+			highComColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			highComColorPanel.transform.parent = container.transform;
+			highComColorPanel.relativePosition = new Vector3(xPos, yPos);
+			highComColorPanel.ChosenColor = 5;
 
 			xPos += spriteWidth;
 
-			IndColourPanel = container.AddUIComponent<ColourPicker>();
-			IndColourPanel.transform.parent = container.transform;
-			IndColourPanel.relativePosition = new Vector3(xPos, yPos);
-			IndColourPanel.ChosenColour = 6;
+			indColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			indColorPanel.transform.parent = container.transform;
+			indColorPanel.relativePosition = new Vector3(xPos, yPos);
+			indColorPanel.ChosenColor = 6;
 
 			xPos += spriteWidth;
 
-			OfficeColourPanel = container.AddUIComponent<ColourPicker>();
-			OfficeColourPanel.transform.parent = container.transform;
-			OfficeColourPanel.relativePosition = new Vector3(xPos, yPos);
-			OfficeColourPanel.ChosenColour = 7;
+			officeColorPanel = container.AddUIComponent<ColorPickerPanel>();
+			officeColorPanel.transform.parent = container.transform;
+			officeColorPanel.relativePosition = new Vector3(xPos, yPos);
+			officeColorPanel.ChosenColor = 7;
 
 			xPos += spriteWidth;
 
@@ -123,12 +125,10 @@ namespace ZoneColour {
 		}
 
 		public void saveButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
-			Debug.Log("save Button Click");
 			Utils.SaveColors();
 		}
 
 		public void loadButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
-			Debug.Log("load Button Click");
 			Utils.LoadColors();
 			ShowCurrentZoneColorsInColorPickers();
 		}
@@ -142,21 +142,19 @@ namespace ZoneColour {
 		public void ToggleVisibility() {
 			if(isVisible) {
 				Hide();
-				Debug.Log("show panel: " + isVisible);
 			}
 			else {
 				Show();
-				Debug.Log("show panel: " + isVisible);
 			}
 		}
 
 		private void ShowCurrentZoneColorsInColorPickers() { 
-			lowResColourPanel.UpdateCurrentZoneColor();
-			highResColourPanel.UpdateCurrentZoneColor();
-			lowComColourPanel.UpdateCurrentZoneColor();
-			highComColourPanel.UpdateCurrentZoneColor();
-			IndColourPanel.UpdateCurrentZoneColor();
-			OfficeColourPanel.UpdateCurrentZoneColor();
+			lowResColorPanel.UpdateCurrentZoneColor();
+			highResColorPanel.UpdateCurrentZoneColor();
+			lowComColorPanel.UpdateCurrentZoneColor();
+			highComColorPanel.UpdateCurrentZoneColor();
+			indColorPanel.UpdateCurrentZoneColor();
+			officeColorPanel.UpdateCurrentZoneColor();
 		}
 	}
 }

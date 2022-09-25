@@ -4,21 +4,21 @@ using ColossalFramework;
 using ColossalFramework.IO;
 using UnityEngine;
 
-namespace ZoneColour {
-	class ConfigFile {
+namespace ZoneColorChanger {
+	class ColorProfileConfigFile {
 		/* This class is from the original Zone Colours Mod
-		 * The current zone colors are stored in this config file
+		 * The current zone color profile ist stored in this config file
 		 * in localappdata/ModConfig/
 		 * Maybe it would be a good idea to store the colors
-		 * with the option setting together. 
+		 * together with the keybind option setting. 
 		 */
 
-		private static string filename = "zone-colours-revisited.cfg";
-		private static Color[] savedColours;
+		private static string filename = "zone-color-changer.cfg";
+		private static Color[] savedColors;
 
-		public static Color[] SavedColours {
-			get { return savedColours; }
-			set { savedColours = value; }
+		public static Color[] SavedColors {
+			get { return savedColors; }
+			set { savedColors = value; }
 		}
 
 		// Credit: https://github.com/MrLawbreaker
@@ -41,12 +41,12 @@ namespace ZoneColour {
 					return File.ReadAllLines(ConfigPath);
 				}
 				else {
-					savedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
+					savedColors = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
 					using (StreamWriter sw = new StreamWriter(ConfigPath)) {
-						sw.WriteLine("Zone Colours Config");
+						sw.WriteLine("Zone Color Changer Color Profile");
 						sw.WriteLine();
-						foreach(Color colour in savedColours) {
-							sw.WriteLine(String.Format("{0},{1},{2},{3}", colour.r, colour.g, colour.b, colour.a));
+						foreach(Color color in savedColors) {
+							sw.WriteLine(String.Format("{0},{1},{2},{3}", color.r, color.g, color.b, color.a));
 						}
 					}
 					return File.ReadAllLines(ConfigPath);
@@ -54,11 +54,11 @@ namespace ZoneColour {
 			}
 		}
 
-		public static bool LoadSavedColours() {
+		public static bool LoadSavedColors() {
 			string[] configLines = ConfigLines;
 
-			savedColours = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
-			int savedColourIndex = 0;
+			savedColors = Singleton<ZoneManager>.instance.m_properties.m_zoneColors;
+			int savedColorIndex = 0;
 
 			for (int i = 0; i < configLines.Length; i++) {
 				string line = configLines[i].Trim();
@@ -68,32 +68,32 @@ namespace ZoneColour {
 					continue;
 				}
 
-				float[] colourArray = new float[4];
+				float[] colorArray = new float[4];
 
 				for (int j = 0; j < 4; j++) {
 					// Check if valid, break out if not
-					if (!float.TryParse(data[j], out colourArray[j])) {
+					if (!float.TryParse(data[j], out colorArray[j])) {
 						Debug.Log("Invalid config found. Default values used.");
 						return false;
 					}
 				}
-				savedColours[savedColourIndex++] = new Color(colourArray[0], colourArray[1], colourArray[2], colourArray[3]);
+				savedColors[savedColorIndex++] = new Color(colorArray[0], colorArray[1], colorArray[2], colorArray[3]);
 			}
 
-			if (savedColourIndex != 8) {
+			if (savedColorIndex != 8) {
 				Debug.Log("Invalid config found. Default values used.");
 				return false; 
 			}
 			return true;
 		}
 
-		public static bool SaveColours() {
+		public static bool SaveColors() {
 			try {
 				using (StreamWriter sw = new StreamWriter(ConfigPath)) {
-					sw.WriteLine("Zone Colours Config");
+					sw.WriteLine("Zone Color Changer Color Profile");
 					sw.WriteLine();
-					foreach (Color colour in savedColours) {
-						sw.WriteLine(String.Format("{0},{1},{2},{3}", colour.r, colour.g, colour.b, colour.a));
+					foreach (Color color in savedColors) {
+						sw.WriteLine(String.Format("{0},{1},{2},{3}", color.r, color.g, color.b, color.a));
 					}
 				}
 				return true;

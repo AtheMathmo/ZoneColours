@@ -4,7 +4,7 @@ using ColossalFramework.UI;
 using ICities;
 using UnityEngine;
 
-namespace ZoneColour {
+namespace ZoneColorChanger {
 	public class Loading : LoadingExtensionBase {
 
 		private GameObject zoneColoursRevisitedGameObject;
@@ -12,7 +12,7 @@ namespace ZoneColour {
 		public override void OnLevelLoaded(LoadMode mode) {
 			try {
 				zoneColoursRevisitedGameObject = new GameObject("Manager");
-				zoneColoursRevisitedGameObject.AddComponent<ZoneColourRevisited>();
+				zoneColoursRevisitedGameObject.AddComponent<ZoneColorChanger>();
 			}
 
 			catch(Exception e) {

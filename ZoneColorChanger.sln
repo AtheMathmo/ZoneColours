@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoneColour", "ZoneColour\ZoneColour.csproj", "{16B79D3E-2342-4A48-986B-36DEE08E8498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoneColorChanger", "ZoneColour\ZoneColorChanger.csproj", "{16B79D3E-2342-4A48-986B-36DEE08E8498}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F903FBB-B6EE-4D47-A3A9-ACECFD5A821E}
 	EndGlobalSection
 EndGlobal

@@ -4,8 +4,8 @@ using System;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace ZoneColour {
-	public class ZoneColourRevisited : MonoBehaviour {
+namespace ZoneColorChanger {
+	public class ZoneColorChanger : MonoBehaviour {
 
 		private MainUIPanel mainUIPanel;
 
@@ -25,7 +25,6 @@ namespace ZoneColour {
 
 				_keyProcessed = true;
 				ToggleUIPanelVisibility();
-				Debug.Log("ZoneColourRevisited ui toggle key");
 			}
 			else {
 				// not both keys pressed: Reset processed state
