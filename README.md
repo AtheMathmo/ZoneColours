@@ -1,7 +1,7 @@
 # ZoneColorChanger
 Zone Color Changer is a mod for Cities Skylines which allows changing the default colors of the rico (residential, industrial, commercial, offices) zones. Useful for players with color issues like color-blindness or who don't like the default colors. 
 
-It is a continuation of the mod Zone Colours: https://steamcommunity.com/sharedfiles/filedetails/?id=421443866
+It is a continuation of the mod Zone Colours by [AtheMathmo](https://github.com/AtheMathmo): https://steamcommunity.com/sharedfiles/filedetails/?id=421443866 (do not subscribe, it's broken)
 
 The mod provides an option to change color of each zone type, the icons in the zoning panel are not affected. (would be a great feature) The color profile is stored in in \AppData\Local\Colossal Order\Cities_Skylines\ModConfig\zone-color-changer.cfg like the original mod did. 
 
