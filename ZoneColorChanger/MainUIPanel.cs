@@ -25,7 +25,7 @@ namespace ZoneColorChanger {
 			ZoningPanel zoningPanel = GameObject.FindObjectOfType<ZoningPanel>();
 			UIPanel container = zoningPanel.GetComponentInChildren<UIPanel>();
 			AddZoneColorPickers(container); // is now in the panel class
-*/
+		*/
 
 		public override void Start() {
 			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
