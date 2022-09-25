@@ -7,8 +7,8 @@
     <ProjectGuid>{16B79D3E-2342-4A48-986B-36DEE08E8498}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZoneColour</RootNamespace>
-    <AssemblyName>ZoneColour</AssemblyName>
+    <RootNamespace>ZoneColorChanger</RootNamespace>
+    <AssemblyName>ZoneColorChanger</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,13 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OptionsKeymapping.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="ZCConfig.cs" />
-    <Compile Include="ZoneColourLoader.cs" />
-    <Compile Include="ZoneColourMod.cs" />
+    <Compile Include="ColorProfileConfigFile.cs" />
+    <Compile Include="MainUIPanel.cs" />
+    <Compile Include="ZoneColorChanger.cs" />
+    <Compile Include="Loading.cs" />
+    <Compile Include="ModInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZoneColourPanel.cs" />
-    <Compile Include="ZoneColourTrigger.cs" />
+    <Compile Include="ColorPickerPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
