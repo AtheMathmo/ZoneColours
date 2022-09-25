@@ -31,7 +31,7 @@ namespace ZoneColorChanger {
 		}
 
 		public string Description {
-			get { return "Allows zone color modification."; }
+			get { return "Allows zone color modification. A continuation of the Zone Colours mod by AtheMathmo"; }
 		}
 
 		public void OnSettingsUI(UIHelperBase helper) {

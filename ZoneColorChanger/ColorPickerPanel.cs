@@ -8,13 +8,13 @@ namespace ZoneColorChanger {
 		private UIColorField colorField;
 		private UIColorField colorFIeldTemplate;
 
-		private int chosenColour = 0;
+		private int chosenColor = 0;
 
 		public UIPanel Parent { get; set; }
 
 		public int ChosenColor {
-			get { return chosenColour; }
-			set { chosenColour = value; }
+			get { return chosenColor; }
+			set { chosenColor = value; }
 		}
 
 		public override void Awake() {

@@ -7,8 +7,8 @@
     <ProjectGuid>{16B79D3E-2342-4A48-986B-36DEE08E8498}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZoneColour</RootNamespace>
-    <AssemblyName>ZoneColour</AssemblyName>
+    <RootNamespace>ZoneColorChanger</RootNamespace>
+    <AssemblyName>ZoneColorChanger</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

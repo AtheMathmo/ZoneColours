@@ -74,6 +74,7 @@ namespace ZoneColorChanger {
 					// Check if valid, break out if not
 					if (!float.TryParse(data[j], out colorArray[j])) {
 						Debug.Log("Invalid config found. Default values used.");
+						
 						return false;
 					}
 				}

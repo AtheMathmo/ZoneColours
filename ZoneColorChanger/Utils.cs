@@ -25,15 +25,15 @@ namespace ZoneColorChanger {
 			Shader.SetGlobalColor("_ZoneColor" + index, color.linear);
 		}
 
-		public static bool SetZoneColors(Color[] colours) {
-			int coloursLength = colours.Length;
-			if (coloursLength != 8) {
+		public static bool SetZoneColors(Color[] colors) {
+			int colorsLength = colors.Length;
+			if (colorsLength != 8) {
 				return false;
 			}
 
-			for (int i = 0; i < coloursLength; i++) {
-				Singleton<ZoneManager>.instance.m_properties.m_zoneColors[i] = colours[i];
-				Shader.SetGlobalColor("_ZoneColor" + i, colours[i].linear);
+			for (int i = 0; i < colorsLength; i++) {
+				Singleton<ZoneManager>.instance.m_properties.m_zoneColors[i] = colors[i];
+				Shader.SetGlobalColor("_ZoneColor" + i, colors[i].linear);
 			}
 			return true;
 		}

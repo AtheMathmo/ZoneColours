@@ -7,16 +7,16 @@ using UnityEngine;
 namespace ZoneColorChanger {
 	public class Loading : LoadingExtensionBase {
 
-		private GameObject zoneColoursRevisitedGameObject;
+		private GameObject zoneColorsChangerGameObject;
 
 		public override void OnLevelLoaded(LoadMode mode) {
 			try {
-				zoneColoursRevisitedGameObject = new GameObject("Manager");
-				zoneColoursRevisitedGameObject.AddComponent<ZoneColorChanger>();
+				zoneColorsChangerGameObject = new GameObject("Manager");
+				zoneColorsChangerGameObject.AddComponent<ZoneColorChanger>();
 			}
 
 			catch(Exception e) {
-				Debug.Log("[ZoneColoursRevisited] Loading:OnLevelLoaded -> Exception: " + e.Message);
+				Debug.Log("[ZoneColorChanger] Loading:OnLevelLoaded -> Exception: " + e.Message);
 			}
 		}
 
