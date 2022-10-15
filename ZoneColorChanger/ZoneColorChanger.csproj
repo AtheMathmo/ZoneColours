@@ -46,6 +46,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnifiedUILib, Version=2.2.12.31246, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnifiedUILib.2.2.12\lib\net35\UnifiedUILib.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
@@ -62,6 +65,7 @@
     <Compile Include="ColorPickerPanel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\UUIButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
