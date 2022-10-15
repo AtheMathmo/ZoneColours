@@ -1,5 +1,6 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
+using UnifiedUI.Helpers;
 
 /* Zone Color Changer is a mod for Cities Skylines. 
  * 
@@ -45,10 +46,18 @@ namespace ZoneColorChanger {
 		public void Start() {
 			Utils.LoadColors();
 
-
 			UIView view = UIView.GetAView();
 			mainUIPanel = view.AddUIComponent(typeof(MainUIPanel)) as MainUIPanel;
-		}
+
+            string iconPath = UUIHelpers.GetFullPath<ModInfo>("Resources", "UUIButton.png"); // returns Path/To/Mod/Resources/UUIButton.png
+            var customButton = UUIHelpers.RegisterCustomButton(
+                name: "ZCCUUIButton",
+                groupName: null, // default group
+                tooltip: "Zone Color Changer",
+                icon: UUIHelpers.LoadTexture(iconPath),
+                onToggle: (value) => ToggleUIPanelVisibility()
+			);
+        }
 
 		public void Update() {
 			if(ModInfo.ToggleUIShortcut.IsPressed()) {
