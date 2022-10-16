@@ -1,6 +1,8 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 using UnifiedUI.Helpers;
+using ColossalFramework;
+using static RenderManager;
 
 /* Zone Color Changer is a mod for Cities Skylines. 
  * 
@@ -39,25 +41,63 @@ using UnifiedUI.Helpers;
 namespace ZoneColorChanger {
 	public class ZoneColorChanger : MonoBehaviour {
 
+		private static ZoneColorChanger instance;
+
+		public static ZoneColorChanger Instance {
+			get {
+				if (instance == null) {
+					instance = GameObject.FindObjectOfType<ZoneColorChanger>();
+				}
+				return instance;
+			}
+		}
+
+		void Awake() {
+			DontDestroyOnLoad(gameObject);
+		}
+
 		private MainUIPanel mainUIPanel;
 
 		private bool _keyProcessed = false;
+
+		private UUICustomButton customButton;
+
+		private const string settingsFileName = "ZoneColorChanger";
 		
+		public string SettingsFileName() {
+			return settingsFileName;
+		}
+
 		public void Start() {
 			Utils.LoadColors();
 
 			UIView view = UIView.GetAView();
 			mainUIPanel = view.AddUIComponent(typeof(MainUIPanel)) as MainUIPanel;
-
-            string iconPath = UUIHelpers.GetFullPath<ModInfo>("Resources", "UUIButton.png"); // returns Path/To/Mod/Resources/UUIButton.png
-            var customButton = UUIHelpers.RegisterCustomButton(
-                name: "ZCCUUIButton",
-                groupName: null, // default group
-                tooltip: "Zone Color Changer",
-                icon: UUIHelpers.LoadTexture(iconPath),
-                onToggle: (value) => ToggleUIPanelVisibility()
-			);
+			AddUUIButton();
+			if(!ModInfo.ShowUUIButton) {
+				HideUUIButton();
+			}
         }
+
+		public void AddUUIButton() {
+			string iconPath = UUIHelpers.GetFullPath<ModInfo>("Resources", "UUIButton.png"); // returns Path/To/Mod/Resources/UUIButton.png
+			customButton = UUIHelpers.RegisterCustomButton(
+				name: "ZCCUUIButton",
+				groupName: null, // default group
+				tooltip: "Zone Color Changer",
+				icon: UUIHelpers.LoadTexture(iconPath),
+				onToggle: (value) => ToggleUIPanelVisibility()
+			);
+			UpdateUUIButtonStatus(mainUIPanel.isVisible);
+		}
+
+		public void ShowUUIButton() {
+			customButton.Button.Show();
+		}
+
+		public void HideUUIButton() {
+			customButton.Button.Hide();
+		}
 
 		public void Update() {
 			if(ModInfo.ToggleUIShortcut.IsPressed()) {
@@ -65,7 +105,8 @@ namespace ZoneColorChanger {
 				if(_keyProcessed) return;
 
 				_keyProcessed = true;
-				ToggleUIPanelVisibility();
+				
+				UpdateUUIButtonStatus(ToggleUIPanelVisibility()); // updating UUI button status when using shortcut for open/close
 			}
 			else {
 				// not both keys pressed: Reset processed state
@@ -73,8 +114,16 @@ namespace ZoneColorChanger {
 			}
 		}
 
-		public void ToggleUIPanelVisibility() {
-			mainUIPanel.ToggleVisibility();
+		public void UpdateUUIButtonStatus() {
+			customButton.IsPressed = mainUIPanel.isVisible;
+		}
+
+		public void UpdateUUIButtonStatus(bool isVisible) {
+			customButton.IsPressed = isVisible;
+		}
+
+		public bool ToggleUIPanelVisibility() {
+			return mainUIPanel.ToggleVisibility();
 		}
 	}
 }

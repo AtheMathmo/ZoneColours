@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OptionsKeymapping.cs" />
+    <Compile Include="SettingsBool.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ColorProfileConfigFile.cs" />
     <Compile Include="MainUIPanel.cs" />

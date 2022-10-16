@@ -1,11 +1,13 @@
-﻿using ColossalFramework.UI;
+﻿using ColossalFramework;
+using ColossalFramework.UI;
+using ICities;
 using UnityEngine;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ZoneColorChanger {
 	public class MainUIPanel : UIPanel {
 
-		private UIDragHandle _dragHandle;
+		private UIDragHandle dragHandle;
 
 		ColorPickerPanel lowResColorPanel;
 		ColorPickerPanel highResColorPanel;
@@ -29,7 +31,26 @@ namespace ZoneColorChanger {
 		*/
 
 		public override void Start() {
-			_dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
+			isVisible = false;
+
+			absolutePosition = new Vector3(ModInfo.savedPanelPositionX.value, ModInfo.savedPanelPositionY.value);
+
+			eventPositionChanged += (c, p) => { // again thanks Roundabout Builder
+				if (absolutePosition.x < 0)
+					absolutePosition = ModInfo.defaultPanelPosition;
+
+				Vector2 resolution = GetUIView().GetScreenResolution();
+
+				absolutePosition = new Vector2(
+					Mathf.Clamp(absolutePosition.x, 0, resolution.x - width),
+					Mathf.Clamp(absolutePosition.y, 0, resolution.y - height));
+
+				ModInfo.savedPanelPositionX.value = (int)absolutePosition.x;
+				ModInfo.savedPanelPositionY.value = (int)absolutePosition.y;
+			};
+
+
+			dragHandle = (UIDragHandle)this.AddUIComponent(typeof(UIDragHandle));
 
 			this.backgroundSprite = "GenericPanel";
 			this.width = 488;
@@ -170,14 +191,17 @@ namespace ZoneColorChanger {
 
 		public void CloseButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
 			ToggleVisibility();
+			ZoneColorChanger.Instance.UpdateUUIButtonStatus(isVisible);
 		}
 
-		public void ToggleVisibility() {
+		public bool ToggleVisibility() { 
 			if(isVisible) {
 				Hide();
+				return isVisible;
 			}
 			else {
 				Show();
+				return isVisible;
 			}
 		}
 

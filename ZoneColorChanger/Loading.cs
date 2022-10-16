@@ -11,7 +11,7 @@ namespace ZoneColorChanger {
 
 		public override void OnLevelLoaded(LoadMode mode) {
 			try {
-				zoneColorsChangerGameObject = new GameObject("Manager");
+				zoneColorsChangerGameObject = new GameObject("ZoneColorChanger");
 				zoneColorsChangerGameObject.AddComponent<ZoneColorChanger>();
 			}
 
