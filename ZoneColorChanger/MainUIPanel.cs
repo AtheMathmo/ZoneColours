@@ -1,5 +1,6 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ZoneColorChanger {
 	public class MainUIPanel : UIPanel {
@@ -35,8 +36,25 @@ namespace ZoneColorChanger {
 			this.height = 56;
 
 			AddZoneColorPickers(this);
+			AddCloseButton(this);
 			this.Hide();
 		}
+
+		private void AddCloseButton(UIPanel container) {
+			var width = 12;
+			var height = 12;
+			var border_margin = 2; // button is anchored top right
+			int xPos = (int)(container.width - width - border_margin);
+			int yPos = border_margin;
+			UIButton closeButton = CreateButton(container, width, height);
+			closeButton.text = "x";
+			closeButton.textScale = 0.7f;
+			//UIButton closeButton = container.AddUIComponent<CloseButton>();
+			closeButton.transform.parent = container.transform;
+			
+			closeButton.relativePosition = new Vector3(xPos, yPos);
+            closeButton.eventClick += CloseButtonClick;
+        }
 
 		private void AddZoneColorPickers(UIPanel container) {
 			int spriteWidth = 50;
@@ -120,11 +138,22 @@ namespace ZoneColorChanger {
 			button.hoveredBgSprite = "ButtonMenuHovered";
 			button.pressedBgSprite = "ButtonMenuPressed";
 			button.canFocus = false;
-
 			return button;
 		}
 
-		public void saveButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
+        public static UIButton CreateButton(UIComponent parent, float width, float height)
+        { // thanks SamsamTS
+            UIButton button = (UIButton)parent.AddUIComponent<UIButton>();
+            button.width = width;
+            button.height = height;
+            button.normalBgSprite = "ButtonMenu";
+            button.hoveredBgSprite = "ButtonMenuHovered";
+            button.pressedBgSprite = "ButtonMenuPressed";
+            button.canFocus = false;
+            return button;
+        }
+
+        public void saveButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
 			Utils.SaveColors();
 		}
 
@@ -137,6 +166,10 @@ namespace ZoneColorChanger {
 			Debug.Log("reset Button Click");
 			Utils.ResetToDefaultColors();
 			ShowCurrentZoneColorsInColorPickers();
+		}
+
+		public void CloseButtonClick(UIComponent component, UIMouseEventParameter eventParam) {
+			ToggleVisibility();
 		}
 
 		public void ToggleVisibility() {
