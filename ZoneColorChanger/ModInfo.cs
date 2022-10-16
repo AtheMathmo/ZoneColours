@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ZoneColorChanger {
 	public class ModInfo : IUserMod {
-		public static readonly string Version = "0.1.dev";
+		public static readonly string Version = "0.2";
 
 		public static string settingsFileName = "ZoneColorChanger";
 		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.K, true, false, false), true);
@@ -34,7 +34,7 @@ namespace ZoneColorChanger {
 			}
 		}
 
-		public string Name => "Zone Color Changer " + Version;
+		public string Name => "Zone Color Changer";
 
 		public string Description => "change the color of each zone type"; 
 
