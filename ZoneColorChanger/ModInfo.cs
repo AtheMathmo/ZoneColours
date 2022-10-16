@@ -6,8 +6,16 @@ using UnityEngine;
 
 namespace ZoneColorChanger {
 	public class ModInfo : IUserMod {
-		public const string settingsFileName = "ZoneColorChanger";
+		public static readonly string Version = "0.2";
+
+		public static string settingsFileName = "ZoneColorChanger";
 		public static readonly SavedInputKey ToggleUIShortcut = new SavedInputKey("toggleUIShortcut", settingsFileName, SavedInputKey.Encode(KeyCode.K, true, false, false), true);
+
+		public static readonly SettingsBool ShowUUIButton = new SettingsBool("Show UUI Button", "",  "showUUIButton", false);
+
+		public static readonly Vector2 defaultPanelPosition = new Vector2(85, 10);
+		public static readonly SavedInt savedPanelPositionX = new SavedInt("panelPositionX", settingsFileName, (int)defaultPanelPosition.x, true);
+		public static readonly SavedInt savedPanelPositionY = new SavedInt("panelPositionY", settingsFileName, (int)defaultPanelPosition.y, true);
 
 		public static bool _settingsFailed = false;
 
@@ -26,13 +34,9 @@ namespace ZoneColorChanger {
 			}
 		}
 
-		public string Name {
-			get { return "Zone Color Changer"; }
-		}
+		public string Name => "Zone Color Changer";
 
-		public string Description {
-			get { return "Allows zone color modification. A continuation of the Zone Colours mod by AtheMathmo"; }
-		}
+		public string Description => "change the color of each zone type"; 
 
 		public void OnSettingsUI(UIHelperBase helper) {
 			UIHelper group = helper.AddGroup(Name) as UIHelper;
@@ -41,6 +45,15 @@ namespace ZoneColorChanger {
 			group.AddSpace(10);
 			panel.gameObject.AddComponent<OptionsKeymapping>();
 			group.AddSpace(10);
+			ShowUUIButton.Draw(group, (b) => {
+				//Debug.Log("Setting Show UUI Button is now " + ShowUUIButton.value);
+				if(ShowUUIButton.value) {
+					ZoneColorChanger.Instance.ShowUUIButton();
+				}
+				else {
+					ZoneColorChanger.Instance.HideUUIButton();
+				}
+			});
 		}
 	}
 }
